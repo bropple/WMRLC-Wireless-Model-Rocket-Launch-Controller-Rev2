@@ -110,7 +110,7 @@ Be careful wiring the launch battery, as there is no reverse polarity protection
 It is highly recommended to test the system using a power resistor, DC lightbulb, or an igniter before using it to actually launch rockets. You can test the continuity of an igniter without destroying it (don't press the launch button).
 
 ## To have the ADC voltage values displayed continuously in the serial monitor
-* Call the Continuty_Check(); function inside the loop() function so it is called over and over again. Add in delay(5000); to add a 5 second delay between the messages. Connect the NodeMCU to the PC and upload the code again with this modification. Leave the NodeMCU connected via USB and turn on the serial monitor to view the debug messages.
+* Call the Continuty_Check(); function inside the loop() function so it is called over and over again. Add in delay(5000); to add a 5 second delay between the messages. Connect the NodeMCU to the PC and upload the code again with this modification. Leave the NodeMCU connected via USB and turn on the serial monitor to view the debug messages. When you're done debugging, remove this modification and reupload the code, as it slows down the system.
 
 ## Software Errors
 ```
