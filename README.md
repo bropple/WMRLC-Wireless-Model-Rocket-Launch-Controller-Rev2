@@ -182,7 +182,7 @@ While not immediately possible for me, I do plan on making future revisions of t
  * Increase accuracy of the ADC
  * Add reverse polarity protection for the launch battery
  * Add more LEDs to indicate system status on the hardware itself
- * Increase Wi-Fi range beyond 30 ft using an external antenna
+ * Increase Wi-Fi range to over 100ft using an external antenna
  * Add a piezoelectric buzzer to make a sound for continuity, and also use it for a software countdown sequence
  * Add more ports for more rockets to be connected at once, with continuity checking available for all of them. Still only allow for one rocket to be launched at any time, and add a software timer to disallow rapid firing.
  * Add the ability to switch the ADC inputs using multiplexing or a different method in order to measure more node voltages than is normally possible with a 2-channel ADC
