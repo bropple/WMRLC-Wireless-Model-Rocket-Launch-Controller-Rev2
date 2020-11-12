@@ -9,7 +9,7 @@
  *   MCP342x by Steve Marple - for communicating with MCP3426 I2C ADC
  *   https://github.com/stevemarple/MCP342x
  *   
- *   ESPAsyncWebServer by me-no-dev - Asynchronus HTTP and Websocket server
+ *   ESPAsyncWebServer by me-no-dev - Asynchronous HTTP and Websocket server
  *   https://github.com/me-no-dev/ESPAsyncWebServer
  *   
  */
@@ -40,9 +40,7 @@ int RELAY_ONTIME = 5; //the number of seconds the relay is toggled on.
 
 int contState = 0; //keeps track of continuity state
 
-bool contChecked = false; //has the continutity been checked once?
-
-bool firstRun = true; //loop running for first time
+bool contChecked = false; //has the continuity been checked once?
 
 long ADCvalue; //the raw ADC voltage value
 long ADCtimeout = 2000000; //Maximum ADC conversion time
@@ -50,7 +48,7 @@ long ADCtimeout = 2000000; //Maximum ADC conversion time
 
 //note: the formula for ADC conversion is (ADC resolution) / (reference voltage) = (ADC reading)/(Analog Voltage)
 //the resolution of the internal ADC is 1023, with a reference of ~1.023V
-//the resolutuin of the I2C ADC is 32767, with a reference of 2.048V
+//the resolution of the I2C ADC is 32767, with a reference of 2.048V
 float calibration = 15999.51; //From ADC conversion formula: 32767/2.048 = (adc reading)/(analog voltage)
 float int_calibration = 1000; //10 bit internal ADC calibration 1023/1.024 = (adc reading)/(analog voltage)
 
@@ -90,7 +88,7 @@ double Get_Diff_Voltage(void){
     
     return DiffVoltage;
   }
-  return 999999.0; //an error has occured!
+  return 999999.0; //an error has occurred!
 }
 
 double Get_5V_Voltage(void){
@@ -120,11 +118,11 @@ double Get_5V_Voltage(void){
   return FiveV_Voltage;
 
   
-  //return 999999.0; //an error has occured!
+  return 999999.0; //an error has occurred!
 }
 
 double Get_Ignition_Voltage(void){
-  /* This function retrives the ADC value of the ignition battery voltage
+  /* This function retrieves the ADC value of the ignition battery voltage
    * and returns it as an actual voltage.
    * 
    * Arguments: none
@@ -161,7 +159,7 @@ double Get_Ignition_Voltage(void){
   MCP342x::generalCallReset();
   delay(5);
   
-  return 999999.0; //an error has occured!
+  return 999999.0; //an error has occurred!
 }
 
 uint8_t Continuity_Check(void){
@@ -372,7 +370,7 @@ const char html[] PROGMEM = R"rawliteral(
                                 else if(TextCode == "BAD_5VBAT") Lmsg.innerHTML="Internal battery voltage is too low! Is the switch on?";
                                 else if(TextCode == "SHORT") Lmsg.innerHTML="Short circuit! Check igniter connection!";
                                 else if(TextCode == "OPEN") Lmsg.innerHTML="Open circuit or High Resistance! Check igniter connection!";
-                                else if(TextCode == "UNK_ERR") Lmsg.innerHTML="An unknown error has occured!";
+                                else if(TextCode == "UNK_ERR") Lmsg.innerHTML="An unknown error has occurred!";
                               }
                             }
                             function launchButton(element){
