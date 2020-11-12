@@ -8,7 +8,7 @@ The WMRLC is an ESP8266-based, Wi-Fi enabled embedded system designed to launch 
 
 Instructions for software installation, and a short tutorial for the hardware construction for those who need it, are in the following sections. A circuit schematic and BOM are available in the Resources folder. Datasheets for the major components are also included in the Resources folder, I recommend reading them to double check the pin connections for the diodes, relay, and the 2N3904 transistor.
 
-Feel free to fork this project and modify the software and circuit schematic to fit your needs at your own risk. Test everything thorughly before launching an actual rocket!
+Feel free to fork this project and modify the software and circuit schematic to fit your needs at your own risk. Test everything thoroughly before launching an actual rocket!
 
 Note: when launching rockets, keep the system away from the rocket's exhaust. If a battery is hit directly, it could cause a thermal runaway and the battery will start a fire.
 
@@ -18,9 +18,9 @@ Note: when launching rockets, keep the system away from the rocket's exhaust. If
 This program was made using the Arduino IDE to simplify programming the device. There are some things you have to do in order to compile and upload the program:
 
  * Download and Install the Arduino IDE if needed, and follow the tutorial [here](https://create.arduino.cc/projecthub/najad/using-arduino-ide-to-program-nodemcu-33e899) to get the NodeMCU working with the Arduino IDE
- * Install the following libaries in Sketch > Include library >  Add .ZIP Library:
+ * Install the following libraries in Sketch > Include library >  Add .ZIP Library:
    * [MCP342x by Steve Marple](https://github.com/stevemarple/MCP342x) - for using the I2C ADC
-   * [ESPAsyncWebServer by me-no-dev](https://github.com/me-no-dev/ESPAsyncWebServer) - Asynchronus HTTP and WebSocket server
+   * [ESPAsyncWebServer by me-no-dev](https://github.com/me-no-dev/ESPAsyncWebServer) - Asynchronous HTTP and WebSocket server
  * Open the WirelessRocketLaunchCtrl.ino file in the Arduino IDE
  * Select "NodeMCU 1.0" under Tools > Board
  * Match settings to this image. Make sure you select the port your NodeMCU is on (COM port for Windows or tty for Linux/OSX)
@@ -98,11 +98,11 @@ I'm leaving the enclosure options up to you, and your desired solderboard size. 
 ![](/img/front.jpg "The front side of the launch controller")
 I used a heat sink on the power diode, this isn't strictly necessary since the high current only flows through it for a short time. The terminal block shown here is where I connect my alligator clip wires and the igniter. The switch shown is the system power switch. This old version doesn't have a safety switch, since I figured the relay would be enough, but the manual safety switch is a good addition in case the microcontroller has an issue, or the relay somehow gets stuck in the open position.
 
-It is important that the internal battery (connected to Vin) is 5V. This can be accomplished with the 18650 battery and shield listed in the BOM, as this takes care of boosting the output to 5V and recharging the battery. Other batteries can be used with DC switching converters to obtain the 5V output. This can also be changed, however, if the 5V voltage divider values are changed so the battery volage is reduced to ~1V. Some ESP8266 development boards include a voltage divider that works up to 3.3V and some do not, so I included the voltage divider anyway. This would only mean you have to change the 5V ADC calibration value in the program.
+It is important that the internal battery (connected to Vin) is 5V. This can be accomplished with the 18650 battery and shield listed in the BOM, as this takes care of boosting the output to 5V and recharging the battery. Other batteries can be used with DC switching converters to obtain the 5V output. This can also be changed, however, if the 5V voltage divider values are changed so the battery voltage is reduced to ~1V. Some ESP8266 development boards include a voltage divider that works up to 3.3V and some do not, so I included the voltage divider anyway. This would only mean you have to change the 5V ADC calibration value in the program.
 
 For the launch battery, I recommend using batteries with a voltage greater than 6V and a high discharge rating (>2A). Lipo batteries, commonly used for RC cars, would work great for this purpose. Ni-Mh Airsoft batteries or even a car battery would also work well. I have found that standard 9V batteries only cause the igniter to smoke slightly (possibly due to a high internal resistance).
 
-Be careful wiring the launch battery, as there is no reverse polarity protection! If your launch battery comes with a special connector (Deans connector, Tamiya connector, etc.), I reccommend getting the same connector with the opposite gender to ensure the polarity is correct every time you plug it in.
+Be careful wiring the launch battery, as there is no reverse polarity protection! If your launch battery comes with a special connector (Deans connector, Tamiya connector, etc.), I recommend getting the same connector with the opposite gender to ensure the polarity is correct every time you plug it in.
 
 ---
 
@@ -136,16 +136,16 @@ Internal battery voltage is too low! Is the switch on?
 ```
 Short circuit! Check igniter connection!
 ```
-* The ignition circuit is shorted, because the differential voltage is near zero, indicating the nodes across the igniter port are connected.
+* The circuit is shorted, because the differential voltage is near zero, indicating the nodes across the igniter port are connected.
 
 ```
 Open circuit or High Resistance! Check igniter connection!
 ```
 * There is no igniter attached or a lead has fallen off, because the differential voltage is large.
 ```
-An unknown error has occured!
+An unknown error has occurred!
 ```
-* An unexpected error has occured. This can only happen if the Continuity_Check() function somehow returns a value outside the range of -1 - 5.
+* An unexpected error has occurred. This can only happen if the Continuity_Check() function somehow returns a value outside the range of -1 - 5.
 
 ## Other errors
 
@@ -168,7 +168,7 @@ An unknown error has occured!
 
 # Future Software Revisions
 I plan on updating the software for this version of the device at least a few times. I plan to add the following features:
-* Measure differential voltage on client login to make sure the ignition voltage isn't present on the igniton line before flipping the safety switch. Low proabability of the relay failing like this, but still good to check.
+* Measure differential voltage on client login to make sure the ignition voltage isn't present on the ignition line before flipping the safety switch. There's a low probablility of the relay failing like this, but still good to check.
 * Try and get auto-login to work on iOS
 * Visual updates to the web interface
 * Find and fix software bugs
