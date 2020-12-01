@@ -10,7 +10,7 @@ Instructions for software installation, and a short tutorial for the hardware co
 
 Feel free to fork this project and modify the software and circuit schematic to fit your needs at your own risk. Test everything thoroughly before launching an actual rocket!
 
-Note: when launching rockets, keep the system away from the rocket's exhaust. If a battery is hit directly, it could cause a thermal runaway and the battery will start a fire.
+Note: when launching rockets, keep the system away from the rocket's exhaust. If a battery is hit directly, it could start a fire.
 
 ---
 
